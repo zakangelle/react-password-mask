@@ -4,6 +4,7 @@ import { containerStyles, inputStyles, buttonStyles } from './styles.js';
 
 export default class PasswordMask extends Component {
   static propTypes = {
+    autoComplete: PropTypes.string,
     value: PropTypes.any.isRequired,
     id: PropTypes.string,
     name: PropTypes.string,
@@ -41,9 +42,9 @@ export default class PasswordMask extends Component {
     buttonClassName: '',
     placeholder: '',
     useVendorStyles: true,
-    onChange() {},
-    onBlur() {},
-    onKeyDown() {}
+    onChange() { },
+    onBlur() { },
+    onKeyDown() { }
   }
 
   state = {
@@ -95,7 +96,7 @@ export default class PasswordMask extends Component {
   }
 
   render() {
-    const { value, id, name, className, inputClassName, buttonClassName, placeholder, autoFocus, minLength, maxLength, onChange, onBlur, onKeyDown, showButtonContent, hideButtonContent, useVendorStyles, readOnly, disabled, required } = this.props;
+    const { autoComplete, value, id, name, className, inputClassName, buttonClassName, placeholder, autoFocus, minLength, maxLength, onChange, onBlur, onKeyDown, showButtonContent, hideButtonContent, useVendorStyles, readOnly, disabled, required } = this.props;
     const { passwordShown } = this.state;
 
     const vendorContainerCss = useVendorStyles ? containerStyles : {};
@@ -130,6 +131,7 @@ export default class PasswordMask extends Component {
           onBlur={onBlur}
           onKeyDown={onKeyDown}
           onFocus={() => this.setState({ hasBeenFocused: true })}
+          autoComplete={autoComplete}
         />
 
         <input
@@ -154,6 +156,7 @@ export default class PasswordMask extends Component {
           onBlur={onBlur}
           onKeyDown={onKeyDown}
           onFocus={() => this.setState({ hasBeenFocused: true })}
+          autoComplete={autoComplete}
         />
 
         <a
